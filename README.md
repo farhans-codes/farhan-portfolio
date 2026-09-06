@@ -1,42 +1,55 @@
 # Farhan — Portfolio
 
-Professional, responsive portfolio for Muhammed Farhan Sadique Mahi. React and Vinext render the entire site as static HTML; no backend, database, API key or paid runtime is needed.
+Muhammed Farhan Sadique Mahi-এর পোর্টফোলিও। সম্পূর্ণ **HTML ও CSS**; React, TypeScript, JavaScript বা npm প্রয়োজন নেই।
 
-## Run and build
+## সাইট দেখুন
+
+`index.html` ডাবলক্লিক করে ব্রাউজারে খুলুন। ছবি, ফন্ট, ডিজাইন ও CV একই ফোল্ডারের `assets/` থেকে লোড হয়। বাইরের ওয়েবসাইটের লিংক খুলতে ইন্টারনেট লাগবে।
+
+চাইলে লোকাল সার্ভারেও চালাতে পারেন:
 
 ```sh
-npm ci
-npm run dev
-npm run lint
-npx tsc --noEmit
-npm run build
-npm run check
+python3 -m http.server 3000 --bind 127.0.0.1
 ```
 
-Production files are in `dist/client`. Preview the built site with any static HTTP server. Opening `index.html` directly via `file://` does not resolve root-relative assets.
+তারপর [localhost:3000](http://localhost:3000) খুলুন। লেখা বা ডিজাইন বদলে ব্রাউজার রিফ্রেশ করুন।
 
-## Free hosting
+## কোন ফাইলে কী বদলাবেন
 
-Upload the **contents of `dist/client`**, or unzip `outputs/portfolio-static.zip` and upload the extracted folder, to a static host. The generated `index.html` must sit at the web root.
+- `index.html` — নাম, পরিচিতি, প্রজেক্ট, অভিজ্ঞতা, গবেষণা, যোগাযোগ, পেজ টাইটেল ও শেয়ার মেটাডেটা।
+- `styles.css` — রং, ফন্ট, স্পেসিং, লেআউট ও মোবাইলের ডিজাইন। ফাইলের শুরুতে `:root`-এ সাধারণ ডিজাইন টোকেন আছে।
+- `assets/images/farhan-portrait.webp` — ওয়েবসাইটের অপ্টিমাইজ করা ছবি।
+- `assets/images/farhan-portrait.png` — ছবির পূর্ণ রেজোলিউশনের কপি।
+- `assets/images/ai-limit-status.png` — প্রজেক্টের স্ক্রিনশট।
+- `assets/farhan-mahi-cv.pdf` — ডাউনলোডযোগ্য CV। নতুন PDF দিয়ে এটি প্রতিস্থাপন করতে পারেন।
+- `assets/favicon.svg` — ব্রাউজার ট্যাবের আইকন।
+- `scripts/create_cv.py` — ঐচ্ছিক CV তৈরির স্ক্রিপ্ট; শুধু এটি চালানোর জন্য ReportLab ও pypdf লাগে।
 
-- [Cloudflare Pages Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/): upload the built folder or ZIP.
-- [Netlify Drop](https://app.netlify.com/drop): upload the built folder while signed into your account. [Official instructions](https://docs.netlify.com/deploy/create-deploys/#drag-and-drop).
+`index.html`, `styles.css` ও `assets/` একসঙ্গে রাখুন। কোনো build ছাড়াই সাইট চলে।
 
-Choose a free plan and review its current limits. The same output also works on GitHub Pages at a domain root, such as `farhans-codes.github.io`. A GitHub project subpath requires a base-path configuration before building.
+## হোস্টিংয়ের ফাইল
 
-`netlify.toml` contains the build and publish settings for a future Git-connected deployment. No Git commit, push or public deployment is performed by this project itself. The Sites registration in `.openai/hosting.json` is private and unpublished until an approved version is deployed.
+হোস্টিংয়ের জন্য শুধু প্রয়োজনীয় ফাইলগুলো `dist/`-এ কপি করতে:
 
-## Update content
+```sh
+sh scripts/build.sh
+```
 
-- `app/page.tsx`: biography, selected projects, experience, research and contact links.
-- `app/globals.css`: shared colour, typography and line-height tokens, layout and responsive styles.
-- `app/layout.tsx`: page title and share metadata. Add the final canonical URL once the public domain is selected.
-- `public/images/farhan-portrait.webp`: optimised portrait for the website.
-- `public/images/farhan-portrait.png`: full-size professional portrait.
-- `public/farhan-mahi-cv.pdf`: two-page, selectable-text CV.
-- `scripts/create_cv.py`: optional PDF rebuild using ReportLab and pypdf.
+`dist/`-এর ভেতরের ফাইলগুলো স্ট্যাটিক হোস্টে আপলোড করুন, অথবা `outputs/portfolio-static.zip` আনজিপ করে ব্যবহার করুন। সাইটের সব asset path relative, তাই GitHub Pages-এর repository subfolder-এও আলাদা base-path বদলাতে হয় না।
 
-The generated Shadcn library and its helper hook remain unchanged and are excluded from project lint; lint covers authored portfolio code. The site uses semantic links and requires no custom client-side interaction state.
+`netlify.toml`-এ এই কপি কমান্ড ও `dist` প্রকাশের সেটিং দেওয়া আছে। `.openai/hosting.json`-ও একই ফোল্ডার ব্যবহার করে। এই স্ক্রিপ্টগুলো নিজে থেকে Git commit, push বা deployment করে না।
+
+## ঐচ্ছিক যাচাই
+
+Python থাকলে কোনো অতিরিক্ত প্যাকেজ ইনস্টল না করেই যাচাই করা যায়:
+
+```sh
+python3 scripts/check_site.py
+sh scripts/build.sh
+python3 scripts/check_site.py dist
+```
+
+এতে সেকশন লিংক, লোকাল ফাইল, ছবির বিকল্প লেখা, মেটাডেটা ও ব্যক্তিগত প্রজেক্টের সীমা যাচাই হয়। এটি ব্রাউজারে দৃশ্যমান ডিজাইন পরীক্ষার বিকল্প নয়।
 
 ## Content sources
 
@@ -55,3 +68,7 @@ The downloadable CV is newly typeset from the supplied CV and verified public pr
 ## Portrait edit
 
 Built-in ImageGen, `identity-preserve` edit, one generation. Prompt: preserve the exact facial structure, proportions, eyes, skin tone, curly black hair, full beard and calm expression; replace the light blue shirt with a plain black crewneck, use a deep charcoal studio background, soft key light and delicate edge light, frame a vertical 4:5 head-and-shoulders portrait, retain natural skin texture, and avoid text, logos, heavy retouching or changes to identity. The WebP is an optimised copy of the generated PNG.
+
+## Asset licenses
+
+The self-hosted Geist and Geist Mono fonts use the SIL Open Font License (`assets/fonts/OFL.txt`). The inline SVG icons retain the Lucide/Feather notices in `assets/icons-LICENSE.txt`.

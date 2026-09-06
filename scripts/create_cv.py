@@ -7,7 +7,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, PageBreak, HRFlowab
 from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'public/farhan-mahi-cv.pdf'
+OUTPUT = ROOT / 'assets/farhan-mahi-cv.pdf'
 INK = colors.HexColor('#182231')
 MUTED = colors.HexColor('#526071')
 BLUE = colors.HexColor('#235baa')

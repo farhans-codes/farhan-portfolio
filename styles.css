@@ -1,15 +1,23 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Local fonts: no downloads or external font service needed. */
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("assets/fonts/geist-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("assets/fonts/geist-mono-latin.woff2") format("woff2");
 }
 
+/* Shared colours, typography and spacing: edit the design here. */
 :root {
+  --font-geist-sans: "Geist";
+  --font-geist-mono: "Geist Mono";
   color-scheme: dark;
   --background: #101113;
   --foreground: #f4f4f5;
@@ -54,8 +62,23 @@
   --line-label: 1.5;
   --space-section: clamp(4.5rem, 7.5vw, 7rem);
 }
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+svg {
+  display: block;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 html {
   scroll-behavior: smooth;
