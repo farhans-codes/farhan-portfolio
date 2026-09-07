@@ -52,7 +52,7 @@
     transparent
   );
   --type-wordmark: 1.75rem;
-  --type-hero-name: clamp(4rem, 21vw, 19rem);
+  --type-hero-name: clamp(4rem, 10vw, 7.5rem);
   --type-hero-statement: clamp(1.9rem, 3.8vw, 3.25rem);
   --line-nameplate: 0.9;
   --type-display: clamp(2.75rem, 5.5vw, 5rem);
