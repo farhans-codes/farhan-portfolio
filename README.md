@@ -67,7 +67,32 @@ The downloadable CV is newly typeset from the supplied CV and verified public pr
 
 ## Portrait edit
 
-Built-in ImageGen, `identity-preserve` edit, one generation. Prompt: preserve the exact facial structure, proportions, eyes, skin tone, curly black hair, full beard and calm expression; replace the light blue shirt with a plain black crewneck, use a deep charcoal studio background, soft key light and delicate edge light, frame a vertical 4:5 head-and-shoulders portrait, retain natural skin texture, and avoid text, logos, heavy retouching or changes to identity. The WebP is an optimised copy of the generated PNG.
+The original portrait was created with built-in ImageGen from the supplied photograph, preserving the subject's identity and replacing the blue shirt with a black crewneck.
+
+The current portrait was refined with built-in ImageGen on 7 September 2026 to clean the bright edge fringe and improve facial clarity. The PNG master is `assets/images/farhan-portrait.png`; the website uses `assets/images/farhan-portrait.webp` at its full native 1122 × 1402 resolution, encoded with WebP quality 95 and sharp YUV conversion. The requested 2048 × 2560 output was not returned by the tool; the image has not been artificially enlarged.
+
+First repair prompt:
+
+```text
+Use case: identity-preserve.
+Asset type: high-resolution portrait for an existing dark developer portfolio.
+Input image 1: edit target and strict identity/composition reference.
+Primary request: repair the supplied portrait's image quality and edge contamination. Keep this exact person, face, age, expression, direct gaze, natural skin tone, facial proportions, distinctive eyes/nose/lips/ears, curly black hair, full beard and moustache, body pose and plain black crewneck unchanged. This is a restrained photographic retouch, not a new person or a makeover.
+Background: replace the existing gray glowing backdrop with a clean, uniform very dark charcoal #101113, matching the portfolio background. Remove the conspicuous white/silver cutout fringe around curls, ears, beard, neck and shoulders. Preserve genuine dark fine hairs and soft natural edge transitions. No white outline, rim lighting, backlight, gray haze, light spots or halo.
+Face quality: improve optical clarity of eyes, eyebrows, hair and beard while removing compression artifacts, coarse speckled noise and muddy facial detail. Use soft balanced frontal studio light and restrained natural contrast so the face looks clear and alive. Preserve realistic fine skin texture and the existing facial features. Avoid oversharpening, crunchy hair, grain, pixelation, blur, waxy skin, airbrushing, plastic skin or invented freckles.
+Composition: keep the input's centered eye-level 4:5 head-and-shoulders framing, scale and headroom; entire hair and both shoulders inside the frame, black shirt continuing to the lower edge. Produce a high-resolution 2048 x 2560 portrait if supported, with clean smooth tonal transitions and fine natural detail.
+No text, watermark, logo, props, additional people, recoloring of skin, beauty filter, facial reshaping or clothing changes.
+```
+
+Final texture refinement prompt:
+
+```text
+Use case: identity-preserve.
+Input image: edit target, the same man's already edge-corrected portrait.
+Make one targeted photographic retouch: the face currently has excessive artificial squiggly, cracked, engraved microtexture on the forehead and cheeks, and the beard/hair look crunchy from oversharpening. Remove those sharpening and generation artifacts. Render skin as continuous natural photographic tones with faint, realistic pores, retaining original small facial details; use gentle noise reduction, not drawn/etched pores and not waxy airbrushing. Keep eyes naturally clear and in focus. Soften only excessive high-frequency facial texture and crunchy hair highlights, with clean realistic individual dark hair strands. Do NOT change face identity, face outline, proportions, expression, eyes, eyebrows, nose, lips, ears, beard shape, hairstyle, skin color, gaze, black crewneck, pose or framing.
+Preserve the corrected clean edges and uniform near-black charcoal backdrop matching #101113, without a white outline, gray halo, rim light, stray white flecks or light patches. Do not brighten the background.
+This must look like a clean high-quality real camera portrait, not an oil painting, etched illustration, beauty-filter face or oversharpened AI portrait. No new objects or text.
+```
 
 ## Asset licenses
 
