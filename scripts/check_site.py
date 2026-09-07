@@ -44,6 +44,8 @@ if __name__ == "__main__":
     assert "<title>Farhan — Flutter Developer</title>" in html
     assert 'href="assets/farhan-mahi-cv.pdf" download' in " ".join(html.split())
     assert "mailto:sadiquefarhan038@gmail.com" in html
+    assert html.count('class="discipline-set"') == 2
+    assert "@keyframes discipline-roll" in css
     assert not re.search(r"className|fetchPriority|_next/|@import|@theme", html + css)
     work = re.search(r'<section\b[^>]*id="work".*?</section>', html, re.S)
     assert work and "AI Limit Status" in work[0] and "One Ummah" not in work[0]

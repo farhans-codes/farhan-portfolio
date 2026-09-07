@@ -44,6 +44,13 @@
     #000 72%,
     transparent 100%
   );
+  --marquee-mask: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
   --type-wordmark: 1.75rem;
   --type-hero-name: clamp(4rem, 21vw, 19rem);
   --type-hero-statement: clamp(1.9rem, 3.8vw, 3.25rem);
@@ -335,31 +342,45 @@ svg {
   mask-image: var(--portrait-mask);
 }
 .discipline-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding-block: 1.6rem;
+  overflow: hidden;
+  padding-block: 1.75rem;
   border-block: 1px solid var(--border);
+  -webkit-mask-image: var(--marquee-mask);
+  mask-image: var(--marquee-mask);
 }
-.discipline-bar > span {
-  font-size: var(--type-meta);
-  font-family: var(--font-geist-mono), monospace;
-  letter-spacing: 0.08em;
-  color: var(--muted-foreground);
+.discipline-track {
+  display: flex;
+  width: max-content;
+  animation: discipline-roll 22s linear infinite;
+  will-change: transform;
 }
-.discipline-bar p {
+.discipline-set {
   display: flex;
   align-items: center;
-  gap: 1.35rem;
-  font-size: var(--type-label);
-  flex-wrap: wrap;
+  gap: clamp(3rem, 7vw, 7rem);
+  padding-right: clamp(3rem, 7vw, 7rem);
 }
-.discipline-bar i {
-  width: 3px;
-  height: 3px;
-  background: var(--muted-foreground);
-  border-radius: 50%;
+.discipline-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--muted-foreground);
+  font-size: var(--type-label);
+  white-space: nowrap;
+}
+.discipline-item svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--foreground);
+  stroke-width: 1.35;
+}
+.discipline-bar:hover .discipline-track {
+  animation-play-state: paused;
+}
+@keyframes discipline-roll {
+  to {
+    transform: translateX(-50%);
+  }
 }
 .section {
   padding-block: var(--space-section);
@@ -519,10 +540,6 @@ svg {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     padding-top: 0;
   }
-  .discipline-bar {
-    align-items: start;
-    flex-direction: column;
-  }
   .hero-links {
     gap: 1rem;
   }
@@ -578,9 +595,6 @@ svg {
   .hero-links {
     margin-top: 1.75rem;
   }
-  .discipline-bar p {
-    gap: 0.8rem;
-  }
   .section-heading {
     align-items: start;
     flex-direction: column;
@@ -611,6 +625,9 @@ svg {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+  .discipline-set[aria-hidden="true"] {
+    display: none;
   }
 }
 .project-grid {
