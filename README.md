@@ -51,6 +51,14 @@ python3 scripts/check_site.py dist
 
 এতে সেকশন লিংক, লোকাল ফাইল, ছবির বিকল্প লেখা, মেটাডেটা ও ব্যক্তিগত প্রজেক্টের সীমা যাচাই হয়। এটি ব্রাউজারে দৃশ্যমান ডিজাইন পরীক্ষার বিকল্প নয়।
 
+## Journey layout
+
+হিরোর পরের জার্নি ছয়টি অধ্যায়ে সাজানো: পরিচয়ের শুরু → চাকরির অভিজ্ঞতা → ব্যক্তিগত প্রজেক্ট → কাজের ধরন → গবেষণা → যোগাযোগ। শেখার আগ্রহ, জটিল সমস্যা সমাধান ও কাজ ঠিকমতো শেষ করার তাগিদের লেখাগুলো মালিকের দেওয়া উত্তর থেকে এসেছে।
+
+ডেস্কটপে পাশের অধ্যায়-নেভিগেশন, ছোট স্ক্রিনে ওপরের নেভিগেশন ও চাকরির ক্রমানুসারী টাইমলাইন আছে। CSS scroll-driven animation সমর্থন করলে কনটেন্ট ধীরে প্রবেশ করে ও পাশের রেখা অগ্রগতি দেখায়; অন্য ব্রাউজারে সব কনটেন্ট স্বাভাবিকভাবে দৃশ্যমান থাকে। `prefers-reduced-motion` থাকলে অ্যানিমেশন বন্ধ এবং প্রযুক্তির সারি হাতে স্ক্রল করা যায়।
+
+গবেষণার রেফারেন্স: [Brittany Chiang](https://brittanychiang.com/)-এর পরিচয়/অভিজ্ঞতা/কাজের বিন্যাস ও [Bruno Simon](https://bruno-simon.com/)-এর আবিষ্কারভিত্তিক পোর্টফোলিও। নিজস্ব অধ্যায়ভিত্তিক নকশা রাখা হয়েছে; তাঁদের লেখা বা নকশা কপি করা হয়নি। অ্যানিমেশনের রেফারেন্স: [MDN animation-timeline](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/animation-timeline)।
+
 ## Content sources
 
 Facts were checked on 6 September 2026 against the supplied two-page CV, connected GitHub profile, repository source and publication records.
