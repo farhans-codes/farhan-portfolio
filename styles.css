@@ -352,7 +352,7 @@ svg {
 .discipline-track {
   display: flex;
   width: max-content;
-  animation: discipline-roll 22s linear infinite;
+  animation: discipline-roll 30s linear infinite;
   will-change: transform;
 }
 .discipline-set {
@@ -369,11 +369,14 @@ svg {
   font-size: var(--type-label);
   white-space: nowrap;
 }
-.discipline-item svg {
+.discipline-item img {
   width: 1.5rem;
   height: 1.5rem;
-  color: var(--foreground);
-  stroke-width: 1.35;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.discipline-item .github-logo {
+  filter: brightness(0) invert(1);
 }
 .discipline-bar:hover .discipline-track {
   animation-play-state: paused;

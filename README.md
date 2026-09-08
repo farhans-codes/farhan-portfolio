@@ -86,4 +86,4 @@ Avoid: harsh rim lighting, painterly textures, illustrated or synthetic appearan
 
 ## Asset licenses
 
-The self-hosted Geist and Geist Mono fonts use the SIL Open Font License (`assets/fonts/OFL.txt`). The inline SVG icons retain the Lucide/Feather notices in `assets/icons-LICENSE.txt`.
+The self-hosted Geist and Geist Mono fonts use the SIL Open Font License (`assets/fonts/OFL.txt`). The inline SVG icons retain the Lucide/Feather notices in `assets/icons-LICENSE.txt`. The technology marquee uses locally stored Devicon original SVG logos in `assets/icons/`; their MIT notice and pinned source are included in the same license file. GitHub's monochrome mark is displayed in white for the dark theme.
