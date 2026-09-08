@@ -37,11 +37,12 @@
     transparent 85%,
     var(--background)
   );
+  --portrait-fade-start: 72%;
   --portrait-mask: linear-gradient(
     to bottom,
     transparent,
     #000 5%,
-    #000 72%,
+    #000 var(--portrait-fade-start),
     transparent 100%
   );
   --marquee-mask: linear-gradient(
@@ -548,6 +549,9 @@ svg {
   }
 }
 @media (max-width: 650px) {
+  :root {
+    --portrait-fade-start: 84%;
+  }
   .site-header {
     min-height: 85px;
     gap: 1rem;
@@ -570,11 +574,11 @@ svg {
     order: -2;
     align-self: center;
     width: min(100% + 2rem, 420px);
-    height: 350px;
+    height: auto;
     margin-left: 0;
   }
   .hero-portrait img {
-    object-position: center 24%;
+    height: auto;
   }
   .hero-copy {
     width: 100%;
@@ -584,7 +588,7 @@ svg {
   .hero-nameplate {
     order: -1;
     width: 100%;
-    margin-top: -0.75em;
+    margin-top: 0;
   }
   .hero .eyebrow {
     letter-spacing: 0.025em;
