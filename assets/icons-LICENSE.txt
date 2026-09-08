@@ -46,7 +46,7 @@ SOFTWARE.
 
 Technology logos from Devicon
 Source: https://github.com/devicons/devicon/tree/7330accdbc47e2dc0c19789a48533c4a3c50fe58
-Files: assets/icons/{flutter,dart,git,github,mysql,sqlite}.svg
+Files: assets/icons/{flutter,dart,python,git,github,mysql,sqlite}.svg
 Brand names and logos remain the property of their respective owners.
 
 The MIT License (MIT)
