@@ -38,6 +38,13 @@
     var(--background)
   );
   --portrait-fade-start: 72%;
+  --portrait-edge-mask: linear-gradient(
+    to right,
+    transparent,
+    #000 18%,
+    #000 85%,
+    transparent
+  );
   --portrait-mask: linear-gradient(
     to bottom,
     transparent,
@@ -53,9 +60,14 @@
     transparent
   );
   --type-wordmark: 1.75rem;
-  --type-hero-name: clamp(4rem, 10vw, 7.5rem);
-  --type-hero-statement: clamp(1.9rem, 3.8vw, 3.25rem);
-  --line-nameplate: 0.9;
+  --type-hero-name: clamp(3rem, min(12vw, 16svh), 9rem);
+  --type-hero-statement: clamp(1.9rem, min(3.8vw, 6svh), 3.25rem);
+  --type-hero-action: var(--type-label);
+  --line-nameplate: 1;
+  --height-header: clamp(3.5rem, 10svh, 6rem);
+  --space-hero-inline: clamp(1rem, 3vw, 3rem);
+  --space-hero-copy: clamp(0.75rem, 2.5svh, 1.5rem);
+  --space-marquee: clamp(0.75rem, 2.5svh, 1.75rem);
   --type-display: clamp(2.75rem, 5.5vw, 5rem);
   --type-section: clamp(2rem, 3.6vw, 3.25rem);
   --type-project: clamp(1.75rem, 3vw, 2.5rem);
@@ -187,7 +199,8 @@ svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 110px;
+  height: var(--height-header);
+  padding-inline: var(--space-hero-inline);
   gap: 1.5rem;
 }
 .wordmark {
@@ -220,38 +233,43 @@ svg {
   border-bottom: 1px solid var(--border);
   padding-block: 0.4rem;
   font-size: var(--type-label);
+  white-space: nowrap;
 }
 .hero {
   position: relative;
   isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  height: calc(100svh - var(--height-header));
   align-items: center;
-  padding-top: 1rem;
-  padding-bottom: 0;
 }
 .hero-copy {
   position: relative;
   z-index: 2;
-  padding-block: 2rem 14rem;
+  grid-area: 1 / 1;
+  min-height: 0;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: var(--space-hero-copy) var(--space-hero-inline);
 }
 .hero-nameplate {
   grid-column: 1 / -1;
+  grid-row: 2;
   position: relative;
   z-index: 3;
   font-size: var(--type-hero-name);
   font-weight: 650;
   letter-spacing: -0.075em;
   line-height: var(--line-nameplate);
-  margin-top: -0.75em;
-  padding-bottom: 0.06em;
-  overflow-wrap: anywhere;
+  padding: 0 var(--space-hero-inline) 0.12em;
+  white-space: nowrap;
 }
 .hero-statement {
   font-size: var(--type-hero-statement);
   line-height: var(--line-display);
   letter-spacing: -0.05em;
-  margin-top: 1.5rem;
+  margin-top: var(--space-hero-copy);
 }
 .hero-statement span {
   color: var(--primary);
@@ -279,14 +297,17 @@ svg {
 .hero-description {
   color: var(--muted-foreground);
   max-width: 26rem;
-  margin-top: 1.25rem;
+  margin-top: var(--space-hero-copy);
 }
 .hero-actions {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
-  margin-top: 2rem;
+  margin-top: var(--space-hero-copy);
+}
+.hero-actions .button {
+  font-size: var(--type-hero-action);
 }
 .button {
   display: inline-flex;
@@ -320,7 +341,7 @@ svg {
   display: flex;
   gap: 1.75rem;
   flex-wrap: wrap;
-  margin-top: 2.5rem;
+  margin-top: var(--space-hero-copy);
   font-size: var(--type-label);
   color: var(--muted-foreground);
 }
@@ -334,11 +355,10 @@ svg {
   width: 0.85rem;
 }
 .hero-portrait {
-  align-self: end;
+  grid-area: 1 / 2 / 3 / 3;
+  align-self: stretch;
   position: relative;
-  width: calc(100% + 3rem);
-  margin-left: -3rem;
-  height: clamp(570px, 48vw, 680px);
+  min-height: 0;
   overflow: hidden;
 }
 .hero-portrait::after {
@@ -349,16 +369,23 @@ svg {
   pointer-events: none;
 }
 .hero-portrait img {
-  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center bottom;
   display: block;
-  mask-image: var(--portrait-mask);
+  mask-image: var(--portrait-mask), var(--portrait-edge-mask);
+  mask-composite: intersect;
 }
 .discipline-bar {
+  grid-column: 1 / -1;
+  align-self: stretch;
+  min-width: 0;
   overflow: hidden;
-  padding-block: 1.75rem;
+  padding-block: var(--space-marquee);
   border-block: 1px solid var(--border);
   -webkit-mask-image: var(--marquee-mask);
   mask-image: var(--marquee-mask);
@@ -401,7 +428,7 @@ svg {
     transform: translateX(-50%);
   }
 }
-/* The chapters share a reading path; the hero keeps its original styling. */
+/* The chapters share a reading path. */
 .journey {
   --muted-foreground: var(--journey-muted);
   display: grid;
@@ -1000,7 +1027,6 @@ svg {
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    padding-top: 0;
   }
   .hero-links { gap: 1rem; }
   .section-heading {
@@ -1009,40 +1035,39 @@ svg {
   }
 }
 @media (max-width: 650px) {
-  :root { --portrait-fade-start: 84%; }
-  .site-header {
-    min-height: 85px;
-    gap: 1rem;
+  :root {
+    --portrait-fade-start: 84%;
+    --type-hero-name: clamp(3rem, min(20vw, 12svh), 7.5rem);
+    --type-hero-statement: clamp(1.5rem, min(6.5vw, 4svh), 2rem);
+    --type-hero-action: clamp(0.75rem, 3.5vw, 0.875rem);
+    --space-hero-copy: clamp(0.5rem, 1.5svh, 0.875rem);
   }
-  .site-header nav { gap: 1.1rem; }
+  .site-header {
+    gap: 0.5rem;
+  }
+  .site-header nav { gap: 0.75rem; }
   .site-header nav a:last-child { display: none; }
   .nav-contact { gap: 0.3rem; }
   .hero {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) minmax(0, auto) auto auto;
   }
   .hero-portrait {
-    order: -2;
-    align-self: center;
-    width: min(100% + 2rem, 420px);
-    height: auto;
-    margin-left: 0;
+    grid-area: 1 / 1;
   }
-  .hero-portrait img { height: auto; }
   .hero-copy {
-    width: 100%;
-    margin-top: 1.5rem;
-    padding-block: 0 3rem;
+    grid-area: 2 / 1;
   }
   .hero-nameplate {
-    order: -1;
-    width: 100%;
-    margin-top: 0;
+    grid-row: 3;
   }
   .hero .eyebrow { letter-spacing: 0.025em; }
   .hero-description { max-width: 100%; }
-  .hero-links { margin-top: 1.75rem; }
+  .hero-actions { gap: 0.5rem; }
+  .hero-actions .button {
+    gap: 0.5rem;
+    padding-inline: 0.75rem;
+  }
   .origin-grid,
   .featured-project,
   .project-grid { grid-template-columns: minmax(0, 1fr); }
@@ -1061,6 +1086,31 @@ svg {
   .app-preview { padding-block: 2rem; }
   .app-preview img { width: min(100%, 250px); }
   .site-footer { flex-wrap: wrap; }
+}
+/* Keep the name and technology strip visible even in a short landscape window. */
+@media (max-height: 500px) and (orientation: landscape) {
+  :root {
+    --height-header: 3rem;
+    --type-hero-statement: clamp(1.25rem, 5svh, 1.75rem);
+    --type-hero-name: clamp(2.5rem, 14svh, 4rem);
+    --space-hero-copy: 0.5rem;
+    --space-marquee: 0.5rem;
+  }
+  .hero {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto auto;
+  }
+  .hero-copy { grid-area: 1 / 1; }
+  .hero-portrait { grid-area: 1 / 2 / 3 / 3; }
+  .hero-nameplate { grid-row: 2; }
+  .hero-description {
+    font-size: var(--type-label);
+    line-height: var(--line-label);
+  }
+  .hero-actions .button {
+    min-height: 44px;
+    padding-block: 0.5rem;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
