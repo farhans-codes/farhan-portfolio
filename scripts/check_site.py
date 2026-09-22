@@ -64,4 +64,8 @@ if __name__ == "__main__":
             assert (root / unquote(url.path)).is_file(), f"Missing file: {reference}"
         elif url.fragment:
             assert url.fragment in page.ids, f"Missing section: {reference}"
-    print(f"Verified {len(references)} links/assets, metadata, image labels and personal-project scope.")
+    print(
+        f"Verified {len(references)} HTML/CSS references: local files, section "
+        "anchors, metadata, image labels and project scope. External URL "
+        "availability requires a separate check."
+    )

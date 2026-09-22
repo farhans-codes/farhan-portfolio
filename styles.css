@@ -28,8 +28,6 @@
   --primary-foreground: #0d1829;
   --border: #303236;
   --success: #a4d9b0;
-  --project-background: #171e29;
-  --preview-background: #202b3b;
   --portrait-overlay: linear-gradient(
     90deg,
     var(--background),
