@@ -66,6 +66,8 @@
   --line-nameplate: 1;
   --height-header: clamp(3.5rem, 10svh, 6rem);
   --space-hero-inline: clamp(1rem, 3vw, 3rem);
+  --space-hero-content-inline: clamp(1rem, 10vw, 12rem);
+  --space-hero-bottom: clamp(1rem, 4svh, 3rem);
   --space-hero-copy: clamp(0.75rem, 2.5svh, 1.5rem);
   --space-marquee: clamp(0.75rem, 2.5svh, 1.75rem);
   --type-display: clamp(2.75rem, 5.5vw, 5rem);
@@ -242,6 +244,8 @@ svg {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
   grid-template-rows: minmax(0, 1fr) auto auto;
   height: calc(100svh - var(--height-header));
+  padding-inline: var(--space-hero-content-inline);
+  padding-bottom: var(--space-hero-bottom);
   align-items: center;
 }
 .hero-copy {
@@ -251,6 +255,7 @@ svg {
   min-height: 0;
   max-height: 100%;
   overflow-y: auto;
+  margin-left: calc(-1 * var(--space-hero-inline));
   padding: var(--space-hero-copy) var(--space-hero-inline);
 }
 .hero-nameplate {
@@ -262,7 +267,7 @@ svg {
   font-weight: 650;
   letter-spacing: -0.075em;
   line-height: var(--line-nameplate);
-  padding: 0 var(--space-hero-inline) 0.12em;
+  padding-bottom: 0.12em;
   white-space: nowrap;
 }
 .hero-statement {
@@ -382,6 +387,7 @@ svg {
 }
 .discipline-bar {
   grid-column: 1 / -1;
+  margin-inline: calc(-1 * var(--space-hero-content-inline));
   align-self: stretch;
   min-width: 0;
   overflow: hidden;
@@ -1025,6 +1031,9 @@ svg {
   }
 }
 @media (max-width: 900px) {
+  :root {
+    --space-hero-content-inline: var(--space-hero-inline);
+  }
   .hero {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
