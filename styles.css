@@ -213,7 +213,7 @@ svg {
 }
 .wordmark span,
 .hero-nameplate span,
-.contact-section h2 span {
+.contact-panel h2 span {
   color: var(--primary);
 }
 .site-header nav {
@@ -433,6 +433,33 @@ svg {
   to {
     transform: translateX(-50%);
   }
+}
+.proof-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  padding-block: clamp(1.25rem, 3vw, 2.5rem);
+  background: var(--border);
+  border-block: 1px solid var(--border);
+}
+.proof-strip a {
+  display: grid;
+  gap: 0.25rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  background: var(--background);
+}
+.proof-strip a:hover strong {
+  color: var(--primary);
+}
+.proof-strip strong {
+  font-size: var(--type-lead);
+  font-weight: 500;
+  line-height: var(--line-heading);
+}
+.proof-strip small {
+  color: var(--muted-foreground);
+  font-size: var(--type-meta);
+  line-height: var(--line-label);
 }
 /* The chapters share a reading path. */
 .journey {
@@ -740,6 +767,32 @@ svg {
   gap: 1.25rem;
   flex-wrap: wrap;
 }
+.case-study {
+  margin-block: 1.5rem;
+  padding-block: 1rem;
+  border-block: 1px solid var(--border);
+}
+.case-study summary {
+  cursor: pointer;
+  color: var(--chapter-accent);
+  font-size: var(--type-label);
+  font-weight: 500;
+}
+.case-study-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.case-study-grid p {
+  color: var(--muted-foreground);
+  font-size: var(--type-label);
+}
+.case-study-grid strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--foreground);
+  font-weight: 500;
+}
 .chapter-work .button-primary {
   background: var(--chapter-accent);
   color: var(--journey-ink);
@@ -902,6 +955,10 @@ svg {
 }
 .contact-panel h2 {
   font-size: var(--type-chapter);
+}
+.contact-lede {
+  max-width: 38rem;
+  margin-top: 1.25rem;
 }
 .contact-email {
   display: inline-flex;
@@ -1084,6 +1141,9 @@ svg {
   .hero-actions .button {
     gap: 0.5rem;
     padding-inline: 0.75rem;
+  }
+  .proof-strip {
+    grid-template-columns: minmax(0, 1fr);
   }
   .origin-grid,
   .featured-project,

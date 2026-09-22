@@ -41,7 +41,7 @@ if __name__ == "__main__":
     page = Page(html)
     assert page.headings == 1, "One main heading expected"
     assert len(page.ids) == len(set(page.ids)), "Duplicate section IDs"
-    assert "<title>Farhan — Flutter Developer</title>" in html
+    assert "<title>Muhammed Farhan Sadique Mahi — Flutter Developer</title>" in html
     assert 'href="assets/farhan-mahi-cv.pdf" download' in " ".join(html.split())
     assert "mailto:sadiquefarhan038@gmail.com" in html
     assert html.count('class="discipline-set"') == 2
