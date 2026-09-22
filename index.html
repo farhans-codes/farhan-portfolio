@@ -72,6 +72,8 @@
       <figure class="hero-portrait">
         <img
           src="assets/images/farhan-portrait.webp"
+          srcset="assets/images/farhan-portrait-480.webp 480w, assets/images/farhan-portrait-768.webp 768w, assets/images/farhan-portrait.webp 1122w"
+          sizes="(max-width: 650px) calc(100vw - 2rem), (max-width: 900px) 50vw, 56vw"
           alt="Muhammed Farhan Sadique Mahi"
           width="1122"
           height="1402"
@@ -351,13 +353,16 @@
             </div>
             <figure class="app-preview">
               <span class="preview-label">AI LIMIT STATUS / MACOS</span>
-              <img
-                src="assets/images/ai-limit-status.png"
-                alt="Actual AI Limit Status macOS interface showing Codex and Claude usage limits"
-                width="448"
-                height="588"
-                loading="lazy"
-              >
+              <picture>
+                <source srcset="assets/images/ai-limit-status.webp" type="image/webp">
+                <img
+                  src="assets/images/ai-limit-status.png"
+                  alt="Actual AI Limit Status macOS interface showing Codex and Claude usage limits"
+                  width="448"
+                  height="588"
+                  loading="lazy"
+                >
+              </picture>
               <figcaption>Actual app screenshot · macOS</figcaption>
             </figure>
           </article>

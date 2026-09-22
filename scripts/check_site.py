@@ -25,6 +25,11 @@ class Page(HTMLParser):
         for key in ("src", "href"):
             if key in attrs:
                 self.references.append(attrs[key])
+        if "srcset" in attrs:
+            self.references.extend(
+                candidate.strip().split()[0]
+                for candidate in attrs["srcset"].split(",")
+            )
         self.headings += tag == "h1"
         if tag == "img":
             assert attrs.get("alt"), "Images need descriptive alternative text"
