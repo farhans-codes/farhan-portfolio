@@ -24,10 +24,10 @@ python3 -m http.server 3000 --bind 127.0.0.1
 - `styles.css` — রং, ফন্ট, স্পেসিং, লেআউট ও মোবাইলের ডিজাইন। ফাইলের শুরুতে `:root`-এ সাধারণ ডিজাইন টোকেন আছে।
 - `assets/images/farhan-portrait.webp` — ওয়েবসাইটের অপ্টিমাইজ করা ছবি।
 - `assets/images/farhan-portrait.png` — ছবির পূর্ণ রেজোলিউশনের কপি।
-- `assets/images/ai-limit-status.png` — প্রজেক্টের স্ক্রিনশট।
-- `assets/farhan-mahi-cv.pdf` — ডাউনলোডযোগ্য CV। নতুন PDF দিয়ে এটি প্রতিস্থাপন করতে পারেন।
+- `assets/images/ai-limit-status.webp` ও `.png` — প্রজেক্টের screenshot ও fallback।
+- `assets/images/social-preview.png` — social share card; production URL ঠিক হলে metadata-তে ব্যবহার হবে।
+- `assets/farhan-mahi-cv.pdf` — মালিকের দেওয়া আসল downloadable CV; এই PDF-ই CV-এর source of truth।
 - `assets/favicon.svg` — ব্রাউজার ট্যাবের আইকন।
-- `scripts/create_cv.py` — ঐচ্ছিক CV তৈরির স্ক্রিপ্ট; শুধু এটি চালানোর জন্য ReportLab ও pypdf লাগে।
 
 `index.html`, `styles.css` ও `assets/` একসঙ্গে রাখুন। কোনো build ছাড়াই সাইট চলে।
 
@@ -53,7 +53,18 @@ sh scripts/build.sh
 python3 scripts/check_site.py dist
 ```
 
-এতে সেকশন লিংক, লোকাল ফাইল, ছবির বিকল্প লেখা, মেটাডেটা ও ব্যক্তিগত প্রজেক্টের সীমা যাচাই হয়। এটি ব্রাউজারে দৃশ্যমান ডিজাইন পরীক্ষার বিকল্প নয়।
+`sh scripts/build.sh` একই checker source ও generated output—দুই জায়গাতেই চালায় এবং কোনো referenced local asset না থাকলে build বন্ধ করে। Checker local references, section anchors, image labels, metadata ও ব্যক্তিগত project scope যাচাই করে; external URL availability বা browser layout যাচাই করে না।
+
+## CV আপডেট
+
+CV বদলাতে মালিকের অনুমোদিত নতুন PDF দিয়ে `assets/farhan-mahi-cv.pdf` সরাসরি প্রতিস্থাপন করুন। তারপর সব পৃষ্ঠা render করে clipping/overlap দেখুন এবং text selection ও প্রয়োজনীয় link পরীক্ষা করুন।
+
+## Content update checklist
+
+1. Role, date, project বা skill বদলালে `index.html` এবং author-provided PDF-এর তথ্য মিলিয়ে নিন।
+2. নতুন CV-এর সব পৃষ্ঠা visually review করুন এবং text/link যাচাই করুন।
+3. নতুন local asset বা `srcset` path checker-এ ধরা পড়ছে নিশ্চিত করতে `sh scripts/build.sh` চালান।
+4. Production domain বদলালে canonical ও Open Graph/Twitter URL একই address-এ update করুন।
 
 ## Journey layout
 
@@ -73,15 +84,15 @@ Facts were checked on 6 September 2026 against the supplied two-page CV, connect
 - [Brain tumour classification prototype](https://github.com/farhans-codes/brain_tumor_webapp): Python/Flask/TensorFlow academic project; no patient images or reports are copied into this site.
 - [One Ummah](https://ummah.one/): appears **only in employment experience**, as an IRD Foundation project.
 - [DeepMedScan](https://doi.org/10.1504/IJAIH.2026.154457): co-authored journal article, 2026.
-- [DragonFruitQualityNet](https://arxiv.org/abs/2508.07306): co-authored preprint. The supplied CV says 2026; the authoritative arXiv record says 10 August 2025, so the portfolio and downloadable CV use 2025.
+- [DragonFruitQualityNet](https://arxiv.org/abs/2508.07306): co-authored preprint. The supplied CV says 2026; the authoritative arXiv record says 10 August 2025, so the portfolio uses 2025 while preserving the author-provided CV unchanged.
 
-The downloadable CV is newly typeset from the supplied CV and verified public projects; it is not a byte-for-byte copy of the attached images.
+The downloadable CV is the author-provided two-page PDF supplied on 22 September 2026 and is preserved byte-for-byte.
 
 ## Portrait edit
 
 The current portrait was edited with built-in ImageGen on 8 September 2026 from the newly supplied `IMG_20260908_144033288_HDR.jpg`. The room background was replaced with a dark charcoal studio backdrop and the T-shirt with a dark collared overshirt. The edit prioritised the original facial features, hair, full beard and neutral expression; generated lighting and fine texture are not pixel-identical to the source.
 
-The PNG master is `assets/images/farhan-portrait.png`; the website uses `assets/images/farhan-portrait.webp` at the returned native 1122 × 1402 resolution, encoded with WebP quality 95 and sharp YUV conversion. The image has not been enlarged.
+The PNG master is `assets/images/farhan-portrait.png`. The website uses 480 × 600, 768 × 960 and native 1122 × 1402 WebP resources through `srcset`; the browser selects a suitable size and no image is enlarged. The project screenshot also has a visually checked WebP resource with the original PNG as fallback.
 
 Final prompt:
 
