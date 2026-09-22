@@ -1046,26 +1046,34 @@ svg {
 @media (max-width: 650px) {
   :root {
     --portrait-fade-start: 84%;
-    --type-hero-name: clamp(3rem, min(20vw, 12svh), 7.5rem);
+    --type-hero-name: min(20vw, 12svh, 7.5rem);
     --type-hero-statement: clamp(1.5rem, min(6.5vw, 4svh), 2rem);
     --type-hero-action: clamp(0.75rem, 3.5vw, 0.875rem);
     --space-hero-copy: clamp(0.5rem, 1.5svh, 0.875rem);
   }
   .site-header {
     gap: 0.5rem;
+    height: auto;
+    min-height: var(--height-header);
+    padding-block: 0.5rem;
+    flex-wrap: wrap;
   }
   .site-header nav { gap: 0.75rem; }
   .site-header nav a:last-child { display: none; }
   .nav-contact { gap: 0.3rem; }
   .hero {
+    height: auto;
+    min-height: calc(100svh - var(--height-header));
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) minmax(0, auto) auto auto;
+    grid-template-rows: minmax(clamp(12rem, 70vw, 20rem), 1fr) auto auto auto;
   }
   .hero-portrait {
     grid-area: 1 / 1;
   }
   .hero-copy {
     grid-area: 2 / 1;
+    max-height: none;
+    overflow-y: visible;
   }
   .hero-nameplate {
     grid-row: 3;
@@ -1106,6 +1114,8 @@ svg {
     --space-marquee: 0.5rem;
   }
   .hero {
+    height: calc(100svh - var(--height-header));
+    min-height: 0;
     grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr) auto auto;
   }
