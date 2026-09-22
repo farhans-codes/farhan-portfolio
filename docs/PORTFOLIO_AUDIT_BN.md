@@ -16,7 +16,7 @@
 
 | ক্ষেত্র | পদ্ধতি ও ফলাফল |
 |---|---|
-| সোর্স | সম্পূর্ণ HTML/CSS, README, build/check/CV scripts, hosting config এবং asset তালিকা পড়া |
+| সোর্স | সম্পূর্ণ HTML/CSS, README, build/check scripts, hosting config এবং asset তালিকা পড়া |
 | বর্তমান সাইট | `http://127.0.0.1:3000/`-এর HTML বর্তমান workspace-এর সঙ্গে byte-for-byte মিলে গেছে |
 | ব্রাউজার | Codex in-app browser-এ desktop, tablet, mobile, landscape screenshot এবং DOM geometry পরীক্ষা |
 | লোকাল integrity | `python3 scripts/check_site.py` সফল; output-এ 59 links/assets references রিপোর্ট করেছে |
@@ -60,7 +60,7 @@
 9. **Token-ভিত্তিক styling।** রং, semantic font sizes ও line heights `:root`-এ আছে; responsive overrides-ও tokens ব্যবহার করে (`styles.css:18`)।
 10. **উপযুক্ত asset loading।** Local WOFF2, `font-display: swap`, hero image-এ high fetch priority, নিচের screenshot lazy-loaded; image dimensions দেওয়া আছে।
 11. **Progressive enhancement।** Scroll animation `@supports`-এর মধ্যে; unsupported browser-এ base content দৃশ্যমান। Reduced-motion rules-ও আছে।
-12. **CV পরিষ্কার।** দুই পৃষ্ঠায় clipping/overlap চোখে পড়েনি, লেখা selectable, A4 layout ও page number আছে, মাত্র 6,353 bytes। তবে selectable হওয়া tagged/সম্পূর্ণ accessible PDF হওয়ার সমান নয়।
+12. **CV পরিষ্কার।** মালিকের দেওয়া 359,061-byte PDF-এর দুই পৃষ্ঠায় clipping/overlap চোখে পড়েনি, লেখা selectable, A4 layout এবং tagged metadata আছে। Selectable/tagged হওয়া পূর্ণ accessibility বা ATS compatibility নিশ্চিত করে না।
 13. **রক্ষণাবেক্ষণের ভিত্তি।** README-তে content/asset locations, local server, build ও check commands আছে; font/icon license notices রাখা হয়েছে।
 
 ## ৪. অগ্রাধিকার ও ট্র্যাকার
@@ -69,23 +69,36 @@
 
 | সম্পন্ন | ID | অগ্রাধিকার | কাজ | ধরন | আনুমানিক সময় |
 |---|---|---|---|---|---|
-| [ ] | A01 | P2 | ছোট স্ক্রিনে hero portrait collapse ঠিক করা | নিশ্চিত visual সমস্যা | ১–২ ঘণ্টা |
+| [x] | A01 | P2 | ছোট স্ক্রিনে hero portrait collapse ঠিক করা | নিশ্চিত visual সমস্যা | ১–২ ঘণ্টা |
 | [ ] | A02 | P2 | Technology strip স্থির করা বা accessible pause দেওয়া | নিশ্চিত interaction ঘাটতি | ৩০–৯০ মিনিট |
-| [ ] | A03 | P2 | প্রধান দুই project-এ নিজের অবদান ও ফলাফলের case study | কনটেন্ট | ২–৪ ঘণ্টা + তথ্য |
-| [ ] | A04 | P2 | Target audience অনুযায়ী hero/contact copy স্পষ্ট করা | কনটেন্ট | ৩০–৬০ মিনিট |
+| [x] | A03 | P2 | প্রধান দুই project-এ নিজের অবদান ও ফলাফলের case study | কনটেন্ট | ২–৪ ঘণ্টা + তথ্য |
+| [x] | A04 | P2 | Target audience অনুযায়ী hero/contact copy স্পষ্ট করা | কনটেন্ট | ৩০–৬০ মিনিট |
 | [ ] | A05 | P2 | Social preview image ও production URL metadata | SEO/share | ১–২ ঘণ্টা |
-| [ ] | A06 | P2 | পুনরায় build-এ stale asset সরানো | নিশ্চিত build সমস্যা | ৩০–৬০ মিনিট |
-| [ ] | A07 | P2 | বিদ্যমান checker-কে publish build-এ ব্যবহার | প্রতিরোধমূলক | ৩০–৬০ মিনিট |
+| [x] | A06 | P2 | পুনরায় build-এ stale asset সরানো | নিশ্চিত build সমস্যা | ৩০–৬০ মিনিট |
+| [x] | A07 | P2 | বিদ্যমান checker-কে publish build-এ ব্যবহার | প্রতিরোধমূলক | ৩০–৬০ মিনিট |
 | [ ] | A08 | P2 | CV-তে project links ও ফলাফল যোগ | কনটেন্ট | ১–২ ঘণ্টা |
-| [ ] | A09 | P2 | Linked project repositories-এর README উন্নত করা | বাইরের repo | ১–৩ ঘণ্টা |
-| [ ] | A10 | P3 | Portrait/screenshot-এর delivery size মেপে কমানো | পারফরম্যান্স | ১–২ ঘণ্টা |
-| [ ] | A11 | P3 | প্রকাশযোগ্য output থেকে unused PNG master বাদ | Build hygiene | ৩০ মিনিট |
+| [x] | A09 | P2 | Linked project repositories-এর README উন্নত করা | বাইরের repo | ১–৩ ঘণ্টা |
+| [x] | A10 | P3 | Portrait/screenshot-এর delivery size মেপে কমানো | পারফরম্যান্স | ১–২ ঘণ্টা |
+| [x] | A11 | P3 | প্রকাশযোগ্য output থেকে unused PNG master বাদ | Build hygiene | ৩০ মিনিট |
 | [ ] | A12 | P3 | Skills-এর প্রমাণ ও নামকরণ স্পষ্ট করা | কনটেন্ট | ৩০–৬০ মিনিট |
-| [ ] | A13 | P3 | দীর্ঘ journey আরও দ্রুত scan করার উপযোগী করা | UX | ১–২ ঘণ্টা |
-| [ ] | A14 | P3 | README-এর ZIP নির্দেশনা ও checker wording ঠিক করা | Documentation | ৩০ মিনিট |
-| [ ] | A15 | P3 | HTML/CV update checklist ও অল্প dead CSS cleanup | Maintenance | ৩০–৬০ মিনিট |
+| [x] | A13 | P3 | দীর্ঘ journey আরও দ্রুত scan করার উপযোগী করা | UX | ১–২ ঘণ্টা |
+| [x] | A14 | P3 | README-এর ZIP নির্দেশনা ও checker wording ঠিক করা | Documentation | ৩০ মিনিট |
+| [x] | A15 | P3 | HTML/CV update checklist ও অল্প dead CSS cleanup | Maintenance | ৩০–৬০ মিনিট |
 | [ ] | A16 | P3 | বাকি accessibility, browser ও print QA | যাচাই বাকি | ১–২ ঘণ্টা |
 | [ ] | A17 | P3 | Production launch checks ও performance baseline | domain-নির্ভর | ১–২ ঘণ্টা |
+
+### বাস্তবায়ন লগ — ২২ সেপ্টেম্বর ২০২৬
+
+| ID | অবস্থা ও যাচাই |
+|---|---|
+| A03–A04 | AI Limit Status ও Task Manager-এ native `<details>` case study, যাচাইযোগ্য contribution/decision/result, নির্দিষ্ট Flutter hero copy এবং কাজের ধরনসহ contact copy যোগ হয়েছে। কোনো user/download সংখ্যা অনুমান করা হয়নি। |
+| A05 | 1200×630 branded `social-preview.png` তৈরি ও visually review হয়েছে। Production URL এখনো নেই—Sites record-এ live/expected URL `null`, GitHub Pages বন্ধ এবং repository homepage ফাঁকা—তাই canonical, `og:url` ও absolute image URL ইচ্ছাকৃতভাবে বাকি। |
+| A06–A07 | Build এখন source check করে, পুরোনো `dist` মুছে নতুন output বানায়, output আবার check করে। Isolated copy-তে stale asset removal এবং referenced asset অনুপস্থিত হলে build failure দুটোই reproduce করে যাচাই হয়েছে। |
+| A08 | মালিকের দেওয়া actual CV downloadable asset হিসেবে বসানো হয়েছে এবং দুই পৃষ্ঠা render, selectable text ও link annotations যাচাই হয়েছে। এতে শুধু email clickable; project, GitHub ও LinkedIn link নেই—তাই item অসম্পূর্ণ রাখা হয়েছে। |
+| A09 | AI Limit Status, Task Manager ও Brain Tumour repository-তে project-specific README ও বাস্তব/sanitised screenshot যোগ হয়েছে। Brain Tumour repository-র tracked uploads/reports working tree থেকে সরানো এবং ভবিষ্যৎ runtime data ignore করা হয়েছে। |
+| A10–A11 | 480×600 (26KB), 768×960 (77KB) ও 1122×1402 portrait `srcset` যোগ হয়েছে; project screenshot-এর visually checked 24KB WebP এবং PNG fallback আছে। Generated `dist` থেকে 2.0MB portrait PNG master বাদ; output 860KB। |
+| A13 | Hero-র পর current role, featured build ও research-এর তিনটি সরাসরি link-সহ compact evidence strip যোগ হয়েছে। |
+| A14–A15 | অকার্যকর ZIP নির্দেশনা বাদ, checker output-এর সীমা পরিষ্কার, author-provided PDF-কে CV source of truth করে update checklist যোগ, unused CSS tokens/selector পরিষ্কার করা হয়েছে। |
 
 ### A01 — ছোট স্ক্রিনে portrait প্রায় অদৃশ্য হয়ে যায়
 
@@ -96,6 +109,8 @@
 **ছোট সমাধান:** ছোট portrait layout-এ content অনুযায়ী hero বাড়তে দাও; প্রয়োজনমতো `min-height` ব্যবহার এবং portrait-এর উপযুক্ত minimum/aspect ratio রাখো। পুরো hero-কে এক screen-এ রাখার জন্য portrait সংকুচিত করা এড়িয়ে যাও। `.hero-copy`-র inner scrolling প্রয়োজন কি না পর্যালোচনা করো।
 
 **সম্পন্ন ধরা হবে যখন:** 320×568, 375×667, 390×844 এবং tablet-এ portrait অর্থপূর্ণ আকারে থাকবে, সব CTA পড়া/চাপা যাবে, page-level horizontal overflow হবে না। 200% text enlargement-ও দেখবে।
+
+**সম্পন্ন — ২২ সেপ্টেম্বর ২০২৬:** মোবাইলে hero-কে content অনুযায়ী বাড়তে দেওয়া হয়েছে, portrait-এর responsive minimum height রাখা হয়েছে এবং `.hero-copy`-র nested scrolling সরানো হয়েছে। Chromium-এ 320×568, 375×667, 390×844, 768×1024, 844×390, 1024×768 ও 1440×900-এ যাচাই করা হয়েছে; portrait যথাক্রমে 224px, 262.5px, 290.1px, 809.4px, 283.5px, 595.6px ও 702.5px ছিল, CTA fit করেছে এবং স্বাভাবিক text size-এ page-level horizontal overflow পাওয়া যায়নি। 320×568-এ 200% text enlargement-এ hero reflow, CTA fit ও nested scroll না থাকাও যাচাই হয়েছে; পূর্ণ page-এর বিস্তৃত text enlargement/browser QA A16-এ থাকবে।
 
 ### A02 — স্বয়ংক্রিয় technology strip থামানোর পূর্ণ নিয়ন্ত্রণ নেই
 
@@ -163,7 +178,7 @@
 
 ### A08 — CV থেকে project যাচাই করতে বাড়তি ধাপ লাগে
 
-**প্রমাণ:** আসল PDF-এ project summaries আছে, কিন্তু তিন project-এর সরাসরি link নেই; generator `scripts/create_cv.py:48`–`:53` একই অবস্থা। Header-এ GitHub/email আছে, LinkedIn বা portfolio URL নেই (`:32`–`:33`)।
+**প্রমাণ:** ২২ সেপ্টেম্বর ২০২৬-এ দেওয়া actual PDF-এ project summaries আছে, কিন্তু সরাসরি project, GitHub, LinkedIn বা portfolio link নেই। একমাত্র URI annotation হলো email link।
 
 **ছোট সমাধান:** প্রতিটি project-এ readable clickable URL, verified contribution/result; header-এ final portfolio URL ও LinkedIn যোগ করো। Web ও CV-র skill naming মিলিয়ে রাখো। নতুন version বানালে দুই page render করে আবার দেখো।
 
@@ -188,7 +203,7 @@
 | Portrait WebP | 319,660 bytes |
 | Project screenshot PNG | 228,562 bytes |
 | দুই WOFF2 font | 52,396 bytes |
-| CV PDF | 6,353 bytes |
+| CV PDF | 359,061 bytes |
 | Unused portrait PNG master | 2,098,763 bytes |
 
 **A10:** `index.html:73`-এ সব screen-এ একই 1122×1402 portrait, `srcset/sizes` নেই। ছোট variant ও উপযুক্ত `sizes` দিয়ে mobile transfer কমানোর সুযোগ আছে। Screenshot-এর আধুনিক/lossless encoding তুলনা করো; UI text যেন ঝাপসা না হয়। মাপ ছাড়া compression savings দাবি করবে না।
@@ -199,7 +214,7 @@
 
 ### A12 — Skills-এর তালিকাকে বিশ্বাসযোগ্য প্রমাণের সঙ্গে যুক্ত করো
 
-**প্রমাণ:** technology strip-এ ১১টি skill/tool (`index.html:84`); skills section-এ Clean Architecture ও feature-first claim (`:393` থেকে)। CV-তে Java basic বলা, strip-এ level নেই। এগুলো সরাসরি বিরোধ নয়, কিন্তু সব skill সমান গভীর মনে হতে পারে। “Material UI” শব্দটি Flutter প্রসঙ্গে অস্পষ্ট (`index.html:410`, `scripts/create_cv.py:60`)।
+**প্রমাণ:** technology strip-এ ১১টি skill/tool (`index.html:84`); skills section-এ Clean Architecture ও feature-first claim (`:393` থেকে)। CV-তে Java ও Kotlin basic বলা, strip-এ level নেই। এগুলো সরাসরি বিরোধ নয়, কিন্তু সব skill সমান গভীর মনে হতে পারে। “Material UI Widgets” শব্দটি Flutter প্রসঙ্গে অস্পষ্ট (`index.html:410` এবং actual CV)।
 
 **ছোট সমাধান:** Flutter/Dart-কে primary, বাকিগুলো supporting/familiar হিসেবে সংক্ষেপে বোঝাও; “Material Design / Flutter Material widgets” নাম ব্যবহার করো। State management, release workflow বা architecture-এর উদাহরণ কেবল ব্যবহার করে থাকলে এবং দেখানোর প্রমাণ থাকলে যোগ করো। Skill percentage bar বানানোর প্রয়োজন নেই।
 
@@ -217,8 +232,8 @@
 
 - **ZIP mismatch:** `README.md:38`-এ `outputs/portfolio-static.zip` আছে, কিন্তু build সেটি বানায় না। Fresh build-এ ZIP নেই। অপ্রয়োজনীয় নির্দেশনা বাদ দাও; নিয়মিত ZIP দরকার হলেই command যোগ করো।
 - **Checker wording:** `scripts/check_site.py:55` HTTP/mailto/tel skip করে; `:62`-এর 59 reference count external availability-এর নিশ্চয়তা নয়। Output-এ local integrity বনাম external/manual checks স্পষ্ট করো।
-- **একাধিক content copy:** HTML, CV generator ও generated PDF একসঙ্গে update করার checklist রাখো। Manual PDF replacement করলে পরের generator run সেটি overwrite করবে—কোনটি source of truth তা লেখো। নতুন CMS এখন প্রয়োজন নেই।
-- **CV setup:** ঐচ্ছিক ReportLab/pypdf environment তৈরির পুনরুৎপাদনযোগ্য নির্দেশনা README-তে যোগ করা যায়।
+- **একাধিক content copy:** HTML ও author-provided PDF-এর facts একসঙ্গে মিলিয়ে দেখার checklist রাখো। Actual PDF-কে CV-এর source of truth হিসেবে স্পষ্ট রাখো। নতুন CMS এখন প্রয়োজন নেই।
+- **CV update:** অনুমোদিত নতুন PDF দিয়ে asset প্রতিস্থাপন এবং সব পৃষ্ঠা render/text/link যাচাইয়ের নির্দেশনা README-তে রাখো।
 - **Dead CSS:** `styles.css:31`–`:32`-এর `--project-background`, `--preview-background` ব্যবহৃত নয়; `:214`-এর `.contact-section h2 span` বর্তমান HTML class-এর সঙ্গে মেলে না। ছোট cleanup যথেষ্ট; বড় rewrite দরকার নেই।
 - **Checker ভবিষ্যৎ বাধা:** `scripts/check_site.py:31` সব `<script>` নিষিদ্ধ করে। পরে non-executable JSON-LD যোগ করলে ওই check-ও সচেতনভাবে বদলাতে হবে; executable JS ও metadata এক জিনিস নয়। Structured data এখন বাধ্যতামূলক upgrade নয়।
 
@@ -263,22 +278,25 @@ DeepMedScan-এর [Crossref record](https://api.crossref.org/works/10.1504/IJAI
 
 ### প্রথম ছোট release — দৃশ্যমান সমস্যা ও release reliability
 
-- [ ] A01: ছোট screen-এর hero ঠিক করা।
+- [x] A01: ছোট screen-এর hero ঠিক করা।
 - [ ] A02: চলমান strip-এর accessible সমাধান।
-- [ ] A06–A07: পরিষ্কার build output এবং existing checker gate।
-- [ ] A14: ZIP ও validation নির্দেশনা সংশোধন।
+- [x] A06–A07: পরিষ্কার build output এবং existing checker gate।
+- [x] A14: ZIP ও validation নির্দেশনা সংশোধন।
 
 ### দ্বিতীয় release — কাজের প্রমাণ ও যোগাযোগ
 
-- [ ] A03–A04: প্রধান দুই case study ও লক্ষ্যভিত্তিক পরিচিতি।
-- [ ] A08–A09: CV links এবং external project documentation।
-- [ ] A12–A13: skills/experience/research copy ও page scanning উন্নয়ন।
+- [x] A03–A04: প্রধান দুই case study ও লক্ষ্যভিত্তিক পরিচিতি।
+- [ ] A08: final portfolio URL-সহ CV links সম্পূর্ণ করা।
+- [x] A09: external project documentation।
+- [ ] A12: skills/experience/research copy উন্নয়ন।
+- [x] A13: page scanning উন্নয়ন।
 
 ### তৃতীয় release — share, performance ও পূর্ণ QA
 
 - [ ] A05: production domain অনুযায়ী share metadata।
-- [ ] A10–A11: image delivery ও package cleanup।
-- [ ] A15–A17: maintenance checklist, browser/accessibility QA ও production baseline।
+- [x] A10–A11: image delivery ও package cleanup।
+- [x] A15: maintenance checklist ও dead CSS cleanup।
+- [ ] A16–A17: browser/accessibility QA ও production baseline।
 
 ## ৭. প্রতিটি update-এর manual acceptance checklist
 
@@ -288,7 +306,7 @@ DeepMedScan-এর [Crossref record](https://api.crossref.org/works/10.1504/IJAI
 - [ ] Reduced-motion on/off, 200% text enlargement ও 400% zoom পরীক্ষা।
 - [ ] Chrome/Chromium, Safari এবং Firefox-এ অন্তত প্রধান flow দেখা।
 - [ ] Source, release, publication, LinkedIn এবং CV links খোলা যায়; mail/phone action সঠিক destination নির্দেশ করে।
-- [ ] সাইটের role/date/skill/publication CV-র সঙ্গে মেলে; generated PDF-এর দুই পৃষ্ঠা render করে দেখা।
+- [ ] সাইটের role/date/skill/publication CV-র সঙ্গে মেলে; author-provided PDF-এর সব পৃষ্ঠা render করে দেখা।
 - [ ] `python3 scripts/check_site.py`, `sh scripts/build.sh`, `python3 scripts/check_site.py dist` সফল।
 - [ ] Published output-এ deleted/অপ্রয়োজনীয় assets নেই; প্রয়োজনীয় licenses আছে।
 - [ ] বাস্তব production URL-এ share preview এবং mobile loading যাচাই।

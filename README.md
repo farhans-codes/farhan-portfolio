@@ -22,7 +22,7 @@ python3 -m http.server 3000 --bind 127.0.0.1
 
 - `index.html` — নাম, পরিচিতি, প্রজেক্ট, অভিজ্ঞতা, গবেষণা, যোগাযোগ, পেজ টাইটেল ও শেয়ার মেটাডেটা।
 - `styles.css` — রং, ফন্ট, স্পেসিং, লেআউট ও মোবাইলের ডিজাইন। ফাইলের শুরুতে `:root`-এ সাধারণ ডিজাইন টোকেন আছে।
-- `assets/images/farhan-portrait.webp` — ওয়েবসাইটের অপ্টিমাইজ করা ছবি।
+- `assets/images/farhan-portrait-480.webp`, `-768.webp` ও `farhan-portrait.webp` — responsive portrait resources।
 - `assets/images/farhan-portrait.png` — ছবির পূর্ণ রেজোলিউশনের কপি।
 - `assets/images/ai-limit-status.webp` ও `.png` — প্রজেক্টের screenshot ও fallback।
 - `assets/images/social-preview.png` — social share card; production URL ঠিক হলে metadata-তে ব্যবহার হবে।
@@ -39,18 +39,16 @@ python3 -m http.server 3000 --bind 127.0.0.1
 sh scripts/build.sh
 ```
 
-`dist/`-এর ভেতরের ফাইলগুলো স্ট্যাটিক হোস্টে আপলোড করুন, অথবা `outputs/portfolio-static.zip` আনজিপ করে ব্যবহার করুন। সাইটের সব asset path relative, তাই GitHub Pages-এর repository subfolder-এও আলাদা base-path বদলাতে হয় না।
+`dist/`-এর ভেতরের ফাইলগুলো স্ট্যাটিক হোস্টে আপলোড করুন। Build প্রতিবার পুরোনো `dist/` পরিষ্কার করে, source ও output যাচাই করে এবং publish package থেকে বড় portrait PNG master বাদ দেয়। সাইটের সব asset path relative, তাই GitHub Pages-এর repository subfolder-এও আলাদা base-path বদলাতে হয় না।
 
 `netlify.toml`-এ এই কপি কমান্ড ও `dist` প্রকাশের সেটিং দেওয়া আছে। `.openai/hosting.json`-ও একই ফোল্ডার ব্যবহার করে। এই স্ক্রিপ্টগুলো নিজে থেকে Git commit, push বা deployment করে না।
 
 ## ঐচ্ছিক যাচাই
 
-Python থাকলে কোনো অতিরিক্ত প্যাকেজ ইনস্টল না করেই যাচাই করা যায়:
+Python থাকলে source আলাদাভাবে যাচাই করা যায়:
 
 ```sh
 python3 scripts/check_site.py
-sh scripts/build.sh
-python3 scripts/check_site.py dist
 ```
 
 `sh scripts/build.sh` একই checker source ও generated output—দুই জায়গাতেই চালায় এবং কোনো referenced local asset না থাকলে build বন্ধ করে। Checker local references, section anchors, image labels, metadata ও ব্যক্তিগত project scope যাচাই করে; external URL availability বা browser layout যাচাই করে না।
