@@ -74,17 +74,17 @@ CV বদলাতে মালিকের অনুমোদিত নতু�
 
 ## Content sources
 
-Facts were checked on 6 September 2026 against the supplied two-page CV, connected GitHub profile, repository source and publication records.
+Portfolio facts were checked against the supplied two-page CV, connected GitHub profile, repository source and publication records. Employment details reflect the CV supplied on 24 September 2026.
 
 - [GitHub profile](https://github.com/farhans-codes)
 - [AI Limit Status](https://github.com/farhans-codes/ai_limit_status): featured **personal** open-source project. Real screenshot from `docs/screenshots/macos-usage-popover.png` in that repository. Independent project, not endorsed by OpenAI or Anthropic.
 - [Task Manager](https://github.com/farhans-codes/task_manager): Flutter source verifies REST integration, authentication and task status views.
 - [Brain tumour classification prototype](https://github.com/farhans-codes/brain_tumor_webapp): Python/Flask/TensorFlow academic project; no patient images or reports are copied into this site.
-- [One Ummah](https://ummah.one/): appears **only in employment experience**, as an IRD Foundation project.
+- [One Ummah](https://ummah.one/): appears **only in employment experience**, as a MaxCode Lab project for IRD Foundation.
 - [DeepMedScan](https://doi.org/10.1504/IJAIH.2026.154457): co-authored journal article, 2026.
 - [DragonFruitQualityNet](https://arxiv.org/abs/2508.07306): co-authored preprint. The supplied CV says 2026; the authoritative arXiv record says 10 August 2025, so the portfolio uses 2025 while preserving the author-provided CV unchanged.
 
-The downloadable CV is the author-provided two-page PDF supplied on 22 September 2026 and is preserved byte-for-byte.
+The downloadable CV is the author-provided two-page PDF supplied on 24 September 2026 and is preserved byte-for-byte.
 
 ## Portrait edit
 
