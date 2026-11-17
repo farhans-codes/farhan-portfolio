@@ -312,14 +312,16 @@
               <div class="tags">
                 <span>Flutter</span>
                 <span>Dart</span>
+                <span>Swift</span>
                 <span>macOS &amp; Windows</span>
+                <span>GitHub Actions</span>
               </div>
               <details class="case-study">
                 <summary>How I built it</summary>
                 <div class="case-study-grid">
-                  <p><strong>Problem</strong>Codex and Claude limits lived in separate tools, making remaining usage hard to check while working.</p>
-                  <p><strong>My contribution</strong>I built the Flutter desktop app, its provider readers, warning flow and native macOS menu-bar and Windows taskbar integrations.</p>
-                  <p><strong>Decision and result</strong>A feature-first structure keeps provider logic separate from the desktop shell. The v0.9.0 release delivers automatic refresh, at-a-glance limits and local warnings.</p>
+                  <p><strong>Problem</strong>Codex and Claude limits lived in separate tools, so checking what was left meant opening a browser or a terminal in the middle of work.</p>
+                  <p><strong>My contribution</strong>I built the Flutter app, its provider readers and warnings, the native macOS menu bar (Swift) and Windows taskbar integrations, and the release pipeline: GitHub Actions builds the DMG and Windows installer, Homebrew installs it, and the app updates itself in one click.</p>
+                  <p><strong>Decision and result</strong>Expired Claude tokens made the app wrongly ask people to sign in again. I traced it to keychain-held credentials, let Claude Code refresh its own token, and read the keychain without a password prompt. Version 1.0 ships that fix with one-click updates, update alerts and a product website.</p>
                 </div>
               </details>
               <div class="project-links">
@@ -333,7 +335,7 @@
                 </a>
                 <a
                   class="text-link"
-                  href="https://github.com/farhans-codes/ai_limit_status/releases/latest"
+                  href="https://farhans-codes.github.io/ai_limit_status/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -341,7 +343,7 @@
                 </a>
               </div>
               <p class="project-footnote">
-                Independent community project · v0.9.0 release
+                Independent community project · v1.0 · macOS and Windows
               </p>
             </div>
             <figure class="app-preview">
@@ -436,7 +438,7 @@
               <span class="skill-index">01</span>
               <h3>Build</h3>
               <p>
-                Flutter · Dart
+                Flutter · Dart · Swift
                 <br>
                 Material UI · Responsive UI
               </p>
@@ -463,9 +465,9 @@
               <span class="skill-index">04</span>
               <h3>Deliver</h3>
               <p>
-                Git &amp; GitHub
+                Git &amp; GitHub · GitHub Actions
                 <br>
-                Android Studio · VS Code
+                Desktop releases · Homebrew
               </p>
             </div>
           </div>
