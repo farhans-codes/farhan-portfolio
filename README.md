@@ -8,6 +8,8 @@ Muhammed Farhan Sadique Mahi-এর পোর্টফোলিও। সম্�
 
 ## সাইট দেখুন
 
+[Public portfolio](https://farhan-portfolio-phi-steel.vercel.app/) — এই production address-ই canonical ও social metadata-তে ব্যবহার করা হয়েছে।
+
 `index.html` ডাবলক্লিক করে ব্রাউজারে খুলুন। ছবি, ফন্ট, ডিজাইন ও CV একই ফোল্ডারের `assets/` থেকে লোড হয়। বাইরের ওয়েবসাইটের লিংক খুলতে ইন্টারনেট লাগবে।
 
 চাইলে লোকাল সার্ভারেও চালাতে পারেন:
@@ -25,7 +27,7 @@ python3 -m http.server 3000 --bind 127.0.0.1
 - `assets/images/farhan-portrait-480.webp`, `-768.webp` ও `farhan-portrait.webp` — responsive portrait resources।
 - `assets/images/farhan-portrait.png` — ছবির পূর্ণ রেজোলিউশনের কপি।
 - `assets/images/ai-limit-status.webp` ও `.png` — প্রজেক্টের screenshot ও fallback।
-- `assets/images/social-preview.png` — social share card; production URL ঠিক হলে metadata-তে ব্যবহার হবে।
+- `assets/images/social-preview.png` — 1200×630 social share card; Open Graph ও Twitter card metadata-তে production URL দিয়ে যুক্ত।
 - `assets/farhan-mahi-cv.pdf` — মালিকের দেওয়া আসল downloadable CV; এই PDF-ই CV-এর source of truth।
 - `assets/favicon.svg` — ব্রাউজার ট্যাবের আইকন।
 
@@ -72,12 +74,23 @@ CV বদলাতে মালিকের অনুমোদিত নতু�
 
 গবেষণার রেফারেন্স: [Brittany Chiang](https://brittanychiang.com/)-এর পরিচয়/অভিজ্ঞতা/কাজের বিন্যাস ও [Bruno Simon](https://bruno-simon.com/)-এর আবিষ্কারভিত্তিক পোর্টফোলিও। নিজস্ব অধ্যায়ভিত্তিক নকশা রাখা হয়েছে; তাঁদের লেখা বা নকশা কপি করা হয়নি। অ্যানিমেশনের রেফারেন্স: [MDN animation-timeline](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/animation-timeline)।
 
+## Published Dart package
+
+[bangladesh_holidays](https://pub.dev/packages/bangladesh_holidays) personal projects-এর দ্বিতীয় প্রধান কাজ। Hero-র নিচের **Published Package** highlight সরাসরি `#bangladesh-holidays`-এ যায়। Project-এ সরকারি সূত্রসহ ২০২৬–২০২৭ সালের bundled data, office rules, offline API এবং প্রকাশিত package-এর case study আছে। Flutter demo-র link ব্যবহার দেখানোর জন্য; package নিজে pure Dart।
+
+Code example-এ Dhaka calendar দিয়ে `[12 April 2027, 19 April 2027)` range-এর ফল **৪ working days**: ১২, ১৩, ১৫ ও ১৮ এপ্রিল। ১৪ এপ্রিল বাংলা নববর্ষ এবং ১৬–১৭ এপ্রিল সাপ্তাহিক ছুটি। End date গণনায় আসে না।
+
+`v0.1.0` ও **160/160 pub points** ১৯ নভেম্বর ২০২৬-এ যাচাই করা হয়েছে; score-এর পাশে তারিখ ও pub.dev analysis link আছে। নতুন release বা score দেখাতে package API/result আবার যাচাই করে version, date ও description একসঙ্গে বদলান। সরকারি snapshot-কে live feed হিসেবে উপস্থাপন করবেন না।
+
+এই update-এ downloadable CV পরিবর্তন করা হয়নি।
+
 ## Content sources
 
 Portfolio facts were checked against the supplied two-page CV, connected GitHub profile, repository source and publication records. Employment details reflect the CV supplied on 24 September 2026.
 
 - [GitHub profile](https://github.com/farhans-codes)
 - [AI Limit Status](https://github.com/farhans-codes/ai_limit_status): featured **personal** open-source project. Real screenshot from `docs/screenshots/macos-usage-popover.png` in that repository. Independent project, not endorsed by OpenAI or Anthropic.
+- [Bangladesh Holidays source](https://github.com/farhans-codes/bangladesh_holidays), [published package](https://pub.dev/packages/bangladesh_holidays), [analysis](https://pub.dev/packages/bangladesh_holidays/score) and [government source ledger](https://github.com/farhans-codes/bangladesh_holidays/blob/main/doc/sources.md): package API, coverage, limitations and publication evidence.
 - [Task Manager](https://github.com/farhans-codes/task_manager): Flutter source verifies REST integration, authentication and task status views.
 - [Brain tumour classification prototype](https://github.com/farhans-codes/brain_tumor_webapp): Python/Flask/TensorFlow academic project; no patient images or reports are copied into this site.
 - [One Ummah](https://ummah.one/): appears **only in employment experience**, as a MaxCode Lab project for IRD Foundation.
